@@ -4,7 +4,7 @@ Tool (CLI) for using [haveibeenpwned](https://haveibeenpwned.com/Passwords) thro
 
 # Install
 
-- Download the script [havei.sh](https://github.com/MrBlaise/haveibeenpwned/blob/master/havei.sh) 
+- Download the script [havei.sh](https://raw.githubusercontent.com/MrBlaise/haveibeenpwned/master/havei.sh) 
 - Run `chmod +x havei.sh`
 
 # Usage
