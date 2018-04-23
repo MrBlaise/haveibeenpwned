@@ -1,6 +1,10 @@
 #!/bin/bash -aeu
 
 set -o pipefail
+shopt -s expand_aliases
+
+type shasum >/dev/null 2>&1 || type sha1sum >/dev/null 2>&1 && alias shasum=sha1sum ||  { echo >&2 "I require shasum or sha1sum to run. Aborting."; exit 1; }
+type curl >/dev/null 2>&1 || { echo >&2 "I require curl to run. Aborting."; exit 1; }
 
 function usage_exit {
     echo "${0} {password} [-f -d -i -p]"

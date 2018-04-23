@@ -1,6 +1,9 @@
 # havei.sh
 Tool (CLI) for using [haveibeenpwned](https://haveibeenpwned.com/Passwords) through its API (only passwords for now)
 
+# Prerequisites
+- shasum or sha1sum
+- curl
 
 # Install
 
