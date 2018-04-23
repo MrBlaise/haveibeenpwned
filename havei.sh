@@ -57,6 +57,10 @@ case $i in
     PLAIN=1	    
     shift 
     ;;
+    -h|--help)
+    usage_exit
+    shift 
+    ;;
     *)
     check_password "${1}"
     exit $?
@@ -73,13 +77,21 @@ if [[ -z "${DELAY:-}" ]]; then
 fi
 
 if [[ ! -z "${FILE:-}" ]]; then
+    first_run=1
     while read -r line; do
+      if [[ "${first_run}" != 1  ]]; then
+	  sleep "${DELAY}"
+      fi
       if [[ ! -z "${PLAIN:-}" ]]; then
 	  echo -n "${line}" | check_password_with_plain_results "${line}"
       else
           echo -n "${line}" | check_password "${line}" || :
       fi
-      sleep "${DELAY}"
+      first_run=0
     done < "${FILE}"    
+fi
+
+if [[ -z "${INTERACTIVE:-}" ]] && [[ -z "${FILE:-}"  ]]; then
+    usage_exit
 fi
 
